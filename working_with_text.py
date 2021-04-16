@@ -8,7 +8,7 @@ pygame.font.init()
 pygame.font.get_init()
 
 # create the display surface
-display_surface=pygame.display.set_mode((400, 400))
+display_surface=pygame.display.set_mode((500, 500))
 
 # change the window screen title
 pygame.display.set_caption('Our Text')
@@ -26,10 +26,10 @@ text2 = font2.render('GeeksForGeeks', True, (0,255,0))
 textRect1 = text1.get_rect()
 textRect2 = text2.get_rect()
 
-# center of the first text
-textRect1.center = (200, 200)
-#center of the second text
-textRect2.center = (200,300)
+# setting center for the first text
+textRect1.center = (250, 250)
+# setting center for the second text
+textRect2.center = (250,300)
 
 
 while True:
