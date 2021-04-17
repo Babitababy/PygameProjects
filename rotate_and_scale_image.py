@@ -12,7 +12,7 @@ screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 
 # Load image
-image = pygame.image.load('bird.jpg')
+image = pygame.image.load('gfg.png')
 
 # Set the size for the image
 DEFAULT_IMAGE_SIZE = (200, 200)
