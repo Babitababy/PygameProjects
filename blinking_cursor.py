@@ -1,44 +1,54 @@
+#import pygame module
 import pygame
-from pygame.locals import *
+
+#import time module
 import time
 
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GRAY = (200, 200, 200)
-
+#initialize the pygame module
 pygame.init()
-screen = pygame.display.set_mode((640, 240))
 
-text = 'this text is editable'
-font = pygame.font.SysFont(None, 48)
-img = font.render(text, True, RED)
+#set the window screen size
+display_screen = pygame.display.set_mode((500, 500))
+
+#add some text
+text = 'Hello Guys!!'
+
+#add default font style with font size
+font = pygame.font.SysFont(None, 40)
+#render the text
+img = font.render(text, True, (255,0,0))
+
 
 rect = img.get_rect()
 rect.topleft = (20, 20)
-cursor = Rect(rect.topright, (3, rect.height))
+cursor = pygame.Rect(rect.topright, (3, rect.height))
 
 running = True
-background = GRAY
 
 while running:
     for event in pygame.event.get():
-        if event.type == QUIT:
+        if event.type == pygame.QUIT:
             running = False
 
-        if event.type == KEYDOWN:
-            if event.key == K_BACKSPACE:
+        # detect if key is physically presssed down
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_BACKSPACE:
                 if len(text) > 0:
-                    text = text[:-1]
+                    text = text[:-1] #stores the text except last character
+
             else:
                 text += event.unicode
-            img = font.render(text, True, RED)
+            img = font.render(text, True, (255,0,0))
             rect.size = img.get_size()
             cursor.topleft = rect.topright
 
-    screen.fill(background)
-    screen.blit(img, rect)
+    # Add background color to the widow screen
+    display_screen.fill((200,255,200))
+    display_screen.blit(img, rect)
+    #cursor is made to blink after every 0.5 sec
     if time.time() % 1 > 0.5:
-        pygame.draw.rect(screen, RED, cursor)
+        pygame.draw.rect(display_screen, (255,0,0), cursor)
+    # update display
     pygame.display.update()
 
 pygame.quit()
